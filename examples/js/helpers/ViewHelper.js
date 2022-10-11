@@ -7,6 +7,7 @@
 		constructor( editorCamera, dom ) {
 
 			super();
+			this.isViewHelper = true;
 			this.animating = false;
 			this.controls = null;
 			const color1 = new THREE.Color( '#ff3653' );
@@ -168,6 +169,27 @@
 
 			};
 
+			this.dispose = function () {
+
+				geometry.dispose();
+				xAxis.material.dispose();
+				yAxis.material.dispose();
+				zAxis.material.dispose();
+				posXAxisHelper.material.map.dispose();
+				posYAxisHelper.material.map.dispose();
+				posZAxisHelper.material.map.dispose();
+				negXAxisHelper.material.map.dispose();
+				negYAxisHelper.material.map.dispose();
+				negZAxisHelper.material.map.dispose();
+				posXAxisHelper.material.dispose();
+				posYAxisHelper.material.dispose();
+				posZAxisHelper.material.dispose();
+				negXAxisHelper.material.dispose();
+				negYAxisHelper.material.dispose();
+				negZAxisHelper.material.dispose();
+
+			};
+
 			function prepareAnimationData( object, focusPoint ) {
 
 				switch ( object.userData.type ) {
@@ -259,8 +281,6 @@
 		}
 
 	}
-
-	ViewHelper.prototype.isViewHelper = true;
 
 	THREE.ViewHelper = ViewHelper;
 

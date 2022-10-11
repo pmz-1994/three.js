@@ -73,24 +73,15 @@
 
 				if ( geometry !== undefined ) {
 
-					if ( geometry.isGeometry ) {
+					const attribute = geometry.attributes.position;
 
-						console.error( 'THREE.ConvexHull no longer supports Geometry. Use THREE.BufferGeometry instead.' );
-						return;
+					if ( attribute !== undefined ) {
 
-					} else if ( geometry.isBufferGeometry ) {
+						for ( let i = 0, l = attribute.count; i < l; i ++ ) {
 
-						const attribute = geometry.attributes.position;
-
-						if ( attribute !== undefined ) {
-
-							for ( let i = 0, l = attribute.count; i < l; i ++ ) {
-
-								const point = new THREE.Vector3();
-								point.fromBufferAttribute( attribute, i ).applyMatrix4( node.matrixWorld );
-								points.push( point );
-
-							}
+							const point = new THREE.Vector3();
+							point.fromBufferAttribute( attribute, i ).applyMatrix4( node.matrixWorld );
+							points.push( point );
 
 						}
 
@@ -1115,5 +1106,9 @@
 	}
 
 	THREE.ConvexHull = ConvexHull;
+	THREE.Face = Face;
+	THREE.HalfEdge = HalfEdge;
+	THREE.VertexList = VertexList;
+	THREE.VertexNode = VertexNode;
 
 } )();
