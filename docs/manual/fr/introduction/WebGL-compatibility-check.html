@@ -9,24 +9,22 @@
 	<body>
 		<h1>Compatibilité WebGL ([name])</h1>
 		<p>
-			Même si le problème se présente de moins en moins, certains appareils ou navigateurs peuvent ne toujours pas supporter WebGL.
+			Même si le problème se présente de moins en moins, certains appareils ou navigateurs peuvent ne toujours pas supporter WebGL 2.
 			La méthode suivante vous permet de vérifier si il est supporté et d'afficher un message à l'utilisateur si il ne l'est pas.
-		</p>
-
-		<p>
-			Ajoutez	[link:https://github.com/mrdoob/three.js/blob/master/examples/jsm/capabilities/WebGL.js]
-			à votre JavaScript et exécutez ce qui suit avant de tenter d'effectuer un rendu de quoi que ce soit.
+			Importez le module de détection de support WebGL et exécutez ce qui suit avant d'essayer de rendre quoi que ce soit.
 		</p>
 
 		<code>
-		if ( WebGL.isWebGLAvailable() ) {
+		import WebGL from 'three/addons/capabilities/WebGL.js';
+
+		if ( WebGL.isWebGL2Available() ) {
 
 			// Initiate function or other initializations here
 			animate();
 
 		} else {
 
-			const warning = WebGL.getWebGLErrorMessage();
+			const warning = WebGL.getWebGL2ErrorMessage();
 			document.getElementById( 'container' ).appendChild( warning );
 
 		}

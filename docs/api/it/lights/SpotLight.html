@@ -51,7 +51,7 @@
 		<h3>[name]( [param:Integer color], [param:Float intensity], [param:Float distance], [param:Radians angle], [param:Float penumbra], [param:Float decay] )</h3>
 		<p>
 			[page:Integer color] - (opzionale) colore esadecimale della luce. Il valore predefinito è 0xffffff (bianco).<br />
-			[page:Float intensity] - (opzionale) il valore numerico della forza/intensità della luce. Il valore predefinito è 1.<br /><br />
+			[page:Float intensity] - (opzionale) il valore numerico della forza/intensità della luce. Il valore predefinito è 1.<br />
 			[page:Float distance] - Portata massima della luce. Il valore predefinito è 0 (nessun limite).<br />
 			[page:Radians angle] - Angolo massimo di dispersione della luce dalla sua direzione in cui il limite superiore è Math.PI/2.<br />
 			[page:Float penumbra] - Percentuale del cono del riflettore che viene attenuata a causa della penombra.
@@ -82,20 +82,13 @@
 
 		<h3>[property:Float decay]</h3>
 		<p>
-      La quantità di attenuazione della luce lungo la distanza della luce.<br />
-			Nella modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], decay = 2 porta ad una diminuzione della luce fisicamente realistica.<br/>
-			Il valore predefinito è `1`.
+			The amount the light dims along the distance of the light. Default is `2`.<br />
+			In context of physically-correct rendering the default value should not be changed.
 		</p>
 
 		<h3>[property:Float distance]</h3>
 		<p>
-      `Modalità predefinita` — Quando la distanza è zero, la luce non si attenua. Quando la distanza è diversa da zero,
-      la luce si attenuerà linearmente dalla massima intensità nella posizione della luce fino a zero a questa distanza 
-      dalla luce.
-		</p>
-		<p>
-      `Modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta]` — Quando la distanza è
-      zero, la luce si attenuerà secondo la legge dell'inverso del quadrato alla distanza infinita.
+      Quando la distanza è zero, la luce si attenuerà secondo la legge dell'inverso del quadrato alla distanza infinita.
       Quando la distanza è diversa da zero, la luce si attenuerà secondo la legge dell'inverso del quadrato 
       fino in prossimità del limite di distanza, dove si attenuerà quindi rapidamente e uniformemente fino a `0`.
       Intrinsecamente, i limiti non sono fisicamente corretti.
@@ -107,8 +100,7 @@
 		<h3>[property:Float intensity]</h3>
 		<p>
 			L'intensità della luce. Il valore predefinito è `1`.<br />
-      Nella modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], l'intensità 
-      è l'intensità luminosa della luce misurata in candela (cd).<br /><br />
+      L'intensità è l'intensità luminosa della luce misurata in candela (cd).<br /><br />
 
       Modificando l'intensità si modificherà anche la potenza della luce.
 		</p>
@@ -126,15 +118,14 @@
 
 		<h3>[property:Vector3 position]</h3>
 		<p>
-      Questo è impostato uguale a [page:Object3D.DefaultUp] (0, 1, 0), così che la luce brilli dall'alto veso il basso.
+      Questo è impostato uguale a [page:Object3D.DEFAULT_UP] (0, 1, 0), così che la luce brilli dall'alto veso il basso.
 		</p>
 
 		<h3>[property:Float power]</h3>
 		<p>
       La potenza della luce. <br />
 
-			Nella modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], la potenza è la potenza 
-      della luminosità della luce misurata in lumen (lm).<br /><br />
+      La potenza è la potenza della luminosità della luce misurata in lumen (lm).<br /><br />
 
       Modificando la potenza si modificherà anche l'intensità della luce.
 		</p>
@@ -175,7 +166,7 @@ light.target = targetObject;
       Una [page:Texture] utilizzata per modulare il colore della luce. Il colore della luce spot viene mescolato con il valore
       RGB di questa texture, con un rapporto corrispondente al suo valore alfa. L'effetto di mascheramento simile a quello dei cookie
       viene riprodotto utilizzando i valori (0, 0, 0, 1-cookie_value).
-      *Attenzione*: [param:SpotLight map] è disabilitata se [param:SpotLight castShadow] è *false*. 
+      *Attenzione*: [page:.map] è disabilitata se [page:.castShadow] è *false*. 
 		</p>
 
 		<h2>Metodi</h2>

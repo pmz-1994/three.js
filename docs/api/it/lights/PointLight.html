@@ -42,8 +42,7 @@ scene.add( light );
 			[page:Integer color] - (opzionale) Il colore esadecimale della luce. Il valore predefinito è 0xffffff (bianco).<br />
 			[page:Float intensity] - (opzionale) Il valore numerico della forza/intensità della luce. Il valore predefinito è 1.<br />
 			[page:Number distance] - Portata massima della luce. Il valore predefinito è 0 (nessun limite).<br />
-			[page:Float decay] - La quantità di attenuazione della luce lungo la distanza della luce. Il valore predefinito è 1.
-			Per un'illuminazione [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], impostarlo a 2.<br /><br />
+			[page:Float decay] - La quantità di attenuazione della luce lungo la distanza della luce. Il valore predefinito è 2.<br /><br />
 
 			Crea una nuova [name].
 		</p>
@@ -53,25 +52,26 @@ scene.add( light );
       Vedi la classe base [page:Light Light] per le proprietà comuni.
 		</p>
 
+		<h3>[property:Boolean castShadow]</h3>
+		<p>
+			Se impostato a `true` la luce proietterà ombre dinamiche. *Attenzione*: Questo 
+			è costoso e richiede una messa a punto per ottenere le ombre giuste. Vedi 
+			[page:PointLightShadow] per i dettagli. Il valore predefinito è `false`.
+		</p>
+
 		<h3>[property:Float decay]</h3>
 		<p>
-			La quantità di attenuazione della luce lungo la distanza della luce.<br />
-			Nella modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], decay = 2 porta ad una diminuzione della luce fisicamente realistica.<br/>
-			Il valore predefinito è `1`.
+			La quantità di luce che si attenua lungo la distanza della luce. L'impostazione predefinita 
+			è `2`.<br /> 
+			Nel contesto di un rendering fisicamente corretto, il valore predefinito non deve essere modificato.
 		</p>
 
 		<h3>[property:Float distance]</h3>
 		<p>
-			`Modalità predefinita` — Quando la distanza è zero, la luce non si attenua. Quando la distanza è diversa da zero,
-      la luce si attenuerà linearmente dalla massima intensità nella posizione della luce fino a zero a questa distanza 
-      dalla luce.
-		</p>
-		<p>
-			`Modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta]` — Quando la distanza è
-      zero, la luce si attenuerà secondo la legge dell'inverso del quadrato alla distanza infinita.
-      Quando la distanza è diversa da zero, la luce si attenuerà secondo la legge dell'inverso del quadrato 
-      fino in prossimità del limite di distanza, dove si attenuerà quindi rapidamente e senza intoppi fino a 0.
-      Intrinsecamente, i limiti non sono fisicamente corretti.
+			Quando la distanza è zero, la luce si attenuerà secondo la legge dell'inverso del quadrato alla distanza infinita.
+			Quando la distanza è diversa da zero, la luce si attenuerà secondo la legge dell'inverso del quadrato 
+			fino in prossimità del limite di distanza, dove si attenuerà quindi rapidamente e senza intoppi fino a 0.
+			Intrinsecamente, i limiti non sono fisicamente corretti.
 		</p>
 		<p>
 			Il valore predefinito è `0.0`.
@@ -80,8 +80,7 @@ scene.add( light );
 		<h3>[property:Float intensity]</h3>
 		<p>
       L'intensità della luce. Il valore predefinito è `1`.<br />
-      Nella modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], l'intensità 
-      è l'intensità luminosa della luce misurata in candela (cd).<br /><br />
+      L'intensità è l'intensità luminosa della luce misurata in candela (cd).<br /><br />
 
       Modificando l'intensità si modificherà anche la potenza della luce.
 		</p>
@@ -89,8 +88,7 @@ scene.add( light );
 		<h3>[property:Float power]</h3>
 		<p>
       La potenza della luce.<br />
-      Nella modalità [page:WebGLRenderer.physicallyCorrectLights fisicamente corretta], la potenza è la potenza 
-      della luminosità della luce misurata in lumen (lm).<br /><br />
+      La potenza è la potenza della luminosità della luce misurata in lumen (lm).<br /><br />
 
       Modificando la potenza si modificherà anche l'intensità della luce.
 		</p>
